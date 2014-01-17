@@ -2,7 +2,7 @@
 
 sample useage
 
-```golang
+```go
 package main
 
 import (
