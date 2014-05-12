@@ -18,6 +18,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"log"
 	"os"
 	"regexp"
 	"strings"
@@ -45,7 +46,10 @@ func checkErr(err error) {
 }
 
 func readFileToString(filename string) string {
-	b, _ := ioutil.ReadFile(filename)
+	b, err := ioutil.ReadFile(filename)
+	if err != nil {
+		log.Fatalln(err.Error())
+	}
 	return string(b)
 }
 
