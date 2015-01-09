@@ -110,7 +110,7 @@ func (raw *rawstatus) blockToStruct(mystat *Mainstat, wg *sync.WaitGroup) {
 		err = json.Unmarshal(a, &tempstat)
 		checkErr(err)
 		mystat.Hoststatus[host] = &tempstat
-	} else if ident == "servicestatus" {
+	} else if ident == "servicestatus" && mystat.Hoststatus[host] != nil {
 		if len(mystat.Hoststatus[host].Servicestatus) == 0 {
 			mystat.Hoststatus[host].Servicestatus = make(map[string]*Servicestatus)
 		}
